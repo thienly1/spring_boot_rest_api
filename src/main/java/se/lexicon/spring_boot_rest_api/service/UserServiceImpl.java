@@ -7,7 +7,6 @@ import se.lexicon.spring_boot_rest_api.exception.ResourceNotFoundException;
 import se.lexicon.spring_boot_rest_api.model.dto.CustomUserDto;
 import se.lexicon.spring_boot_rest_api.model.dto.RoleDto;
 import se.lexicon.spring_boot_rest_api.model.dto.UserDto;
-import se.lexicon.spring_boot_rest_api.model.entity.Role;
 import se.lexicon.spring_boot_rest_api.model.entity.User;
 import se.lexicon.spring_boot_rest_api.repository.RoleRepository;
 import se.lexicon.spring_boot_rest_api.repository.UserRepository;
@@ -30,10 +29,10 @@ public class UserServiceImpl implements UserService{
         //TODO
         //Check if the input data is
         if(userDto==null) throw new IllegalArgumentException("User Dto is null");
-        if(userDto.getUsername()==null) throw new IllegalArgumentException("Username can not be null");
-        if(userDto.getPassword()==null) throw new IllegalArgumentException("Password can not be null");
-        if(userDto.isExpired()) throw new IllegalArgumentException("Expired date must be false or null");
-        if(userDto.getRoles()==null||userDto.getRoles().size()==0) throw new IllegalArgumentException("No Roles found");
+//        if(userDto.getUsername()==null) throw new IllegalArgumentException("Username can not be null");
+//        if(userDto.getPassword()==null) throw new IllegalArgumentException("Password can not be null");
+//        if(userDto.isExpired()) throw new IllegalArgumentException("Expired date must be false or null");
+//        if(userDto.getRoles()==null||userDto.getRoles().size()==0) throw new IllegalArgumentException("No Roles found");
 
         //Check if the username is a duplicate
         if(userRepository.existsByUserName(userDto.getUsername())) throw new ResourceDuplicateException("Username is already in use");

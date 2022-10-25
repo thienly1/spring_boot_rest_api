@@ -9,6 +9,8 @@ import se.lexicon.spring_boot_rest_api.model.dto.CustomUserDto;
 import se.lexicon.spring_boot_rest_api.model.dto.UserDto;
 import se.lexicon.spring_boot_rest_api.service.UserService;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
@@ -21,7 +23,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserDto> register(@RequestBody UserDto userDto){
+    public ResponseEntity<UserDto> register(@Valid @RequestBody UserDto userDto){ //@Valid TRIGGERS VALIDATION ON ANNOTATED @RequestBody before the method runs
         System.out.println("userDto = " + userDto);
         UserDto result = userService.register(userDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(result);
